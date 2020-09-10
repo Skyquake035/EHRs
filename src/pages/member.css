@@ -23,7 +23,6 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-
 }
 
 .App-link {
@@ -39,39 +38,80 @@
   }
 }
 
-#components-layout-demo-custom-trigger .trigger:hover {
-  color: #03ADB8;
-}
-
 .button {
     background:#03ADB8 ;
     
 }
+
+#components-layout-demo-responsive .logo {
+  height: 32px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px;
+}
+
 .site-layout-sub-header-background {
-  border-bottom: 5px solid #0e0d0d;
+  background: #03ADB8;
+}
+
+.site-layout-background {
+  background: #03ADB8;
+}
+
+.table-enter-leave-demo-wrapper {
+  position: relative;
+  background: #03ADB8;
+  overflow: hidden;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.table-enter-leave-demo {
+  box-shadow: 0 10px 40px #03ADB8;
+  width: 60%;
+  min-width: 550px;
+  height: 440px;
+  background: #F4F4F4;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.table-enter-leave-demo-header {
+  height: 32px;
+  line-height: 32;
+  background: #D8D8D8;
 }
 
 
 /* 外壳 end */
 
 .table-enter-leave-demo-nav {
-  height: 90px;
-  background: #E8E4E4;
-  line-height: 45px;
+  height: 52px;
+  background: #080B20;
+  line-height: 47px;
 }
-/*แก้*/
+
 .table-enter-leave-demo-nav span {
-  margin: 30px;
+  margin-left: 20px;
+}
+
+.table-enter-leave-demo-list {
+  width: 20%;
+  height: 150mm;
+  display: inline-block;
+  background: #171C3E;
 }
 
 .table-enter-leave-demo-action-bar {
-  margin-top: -73px;
-  margin-right: 50px;
-  margin-left: 800px;
+  margin-top: 10px; 
+  margin-right: 30px;
+  margin-left: 30px;
+  background: #E8E4E4;
   line-height: 30px;
   height: 40px;
   position: relative;
-  border-radius: 4px;
+  border-radius: 2px;
 }
 
 
@@ -131,30 +171,6 @@
 
 #components-grid-demo-flex-order [class~='ant-row'] {
   background: rgba(128, 128, 128, 0.08);
-}
-
-.table-enter-leave-demo-table .ant-table-thead > tr, .table-enter-leave-demo-table .ant-table-tbody > tr {
-  display: block;
-}
-
-.table-enter-leave-demo-table .ant-table-thead > tr, .table-enter-leave-demo-table .ant-table-tbody > tr {
-  transition: none;
-  height: 50px;
-}
-.table-enter-leave-demo-table .ant-table-thead > tr > th:nth-child(1), .table-enter-leave-demo-table .ant-table-tbody > tr > td:nth-child(1) {
-  width: 20%;
-}
-.table-enter-leave-demo-table .ant-table-thead > tr > th:nth-child(2), .table-enter-leave-demo-table .ant-table-tbody > tr > td:nth-child(2) {
-  width: 20%;
-}
-.table-enter-leave-demo-table .ant-table-thead > tr > th:nth-child(3), .table-enter-leave-demo-table .ant-table-tbody > tr > td:nth-child(3) {
-  width: 20%;
-}
-.table-enter-leave-demo-table .ant-table-thead > tr > th:nth-child(4), .table-enter-leave-demo-table .ant-table-tbody > tr > td:nth-child(4) {
-  width: 20%;
-}
-.table-enter-leave-demo-table .ant-table-thead > tr > th:nth-child(5), .table-enter-leave-demo-table .ant-table-tbody > tr > td:nth-child(5) {
-  width: 20%;
 }
 
 @media screen and (max-width: 414px) {

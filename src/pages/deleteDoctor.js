@@ -5,24 +5,12 @@ import Table from 'antd/lib/table';
 import Button from 'antd/lib/button';
 import PropTypes from 'prop-types';
 import { TweenOneGroup } from 'rc-tween-one';
+import { Divider } from 'antd';
 import { Menu } from 'antd';
 import { Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
-import { EditOutlined, UserAddOutlined ,UserDeleteOutlined , InfoCircleOutlined } from '@ant-design/icons';
+import { EditOutlined, UserAddOutlined ,UserDeleteOutlined} from '@ant-design/icons';
 import { Input } from 'antd';
-import { Row, Col ,Divider } from 'antd';
-import { Popover } from 'antd';
-
-const content = (
-  <div>
-    <p style={{color: 'red'}}>ผู้ป่วยฉุกเฉินวิกฤต</p>
-    <p style={{color: '#FFC300 '}}>ผู้ป่วยฉุกเฉินเร่งด่วน</p>
-    <p style={{color: 'green'}}>ผู้ป่วยฉุกเฉินแต่ไม่รุนแรง</p>
-    <p>ผู้ป่วยทั่วไป</p>
-  </div>
-);
-
-const DemoBox = props => <p className={`height-${props.value}`}>{props.children}</p>;
 
 const { Search } = Input;
 
@@ -31,7 +19,6 @@ const { Header, Footer, Sider, Content } = Layout;
 const TableContext = React.createContext(false);
 
 class App extends React.Component {
-  
   static propTypes = {
     className: PropTypes.string,
   };
@@ -43,10 +30,23 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.columns = [
-      { title: 'รหัสผู้ป่วย', dataIndex: 'number', key: 'number' },
+      { title: 'รหัสประจำตัวแพทย์', dataIndex: 'number', key: 'number' },
       { title: 'คำนำหน้า', dataIndex: 'prefix', key: 'prefix' },
       { title: 'ชื่อ', dataIndex: 'name', key: 'name' },
       { title: 'นามสกุล', dataIndex: 'surname', key: 'surname' },
+      {
+        title: 'การปรับปรุงแก้ไขข้อมูล',
+        dataIndex: '',
+        key: 'x',
+        render: (text, record) => (
+          <span
+            className={`${this.props.className}-delete`}
+            onClick={(e) => { this.onDelete(record.key, e); }}
+          >
+          <center style={{marginRight: 40}}>ลบรายชื่อ</center>  
+          </span>
+        ),
+      },
     ];
    
    
@@ -115,48 +115,6 @@ class App extends React.Component {
       },
       {
         key: 4,
-        number: 60090500000,
-        prefix: 'นาย',
-        name: 'John',
-        surname: 'Brown',
-      },
-      {
-        key: 5,
-        number: 60090500000,
-        prefix: 'นาย',
-        name: 'John',
-        surname: 'Brown',
-      },
-      {
-        key: 6,
-        number: 60090500000,
-        prefix: 'นาย',
-        name: 'John',
-        surname: 'Brown',
-      },
-      {
-        key: 7,
-        number: 60090500000,
-        prefix: 'นาย',
-        name: 'John',
-        surname: 'Brown',
-      },
-      {
-        key: 8,
-        number: 60090500000,
-        prefix: 'นาย',
-        name: 'John',
-        surname: 'Brown',
-      },
-      {
-        key: 9,
-        number: 60090500000,
-        prefix: 'นาย',
-        name: 'John',
-        surname: 'Brown',
-      },
-      {
-        key: 10,
         number: 60090500000,
         prefix: 'นาย',
         name: 'John',
@@ -234,10 +192,7 @@ class App extends React.Component {
         console.log(collapsed, type);
       }}
     >
-      <br/><br/><br/><center><Avatar className="picture" size={80} icon={<UserOutlined />} 
-      style={{
-        backgroundColor: '#03ADB8',
-      }} /></center>
+      <br/><br/><br/><center><Avatar className="picture" size={80} icon={<UserOutlined />} /></center>
       <br/><h2 style={{textAlign: 'center', color: 'white'}}>ชื่อ</h2>
       <h3 style={{textAlign: 'center' , color: 'white'}}>ตำแหน่ง</h3>
       <div className="logo" />
@@ -256,11 +211,9 @@ class App extends React.Component {
         </Menu.Item>
       </Menu>
       <br/><center><Button className="button" style={{ color:"white", marginTop: 70}}>ออกจากระบบ</Button></center>
-      
     </Sider>
-
     <Layout style={{background: '#E8E4E4'}}>
-      <Header className="site-layout-sub-header-background" style={{padding: 0, minHeight: 60 }} >
+    <Header className="site-layout-sub-header-background" style={{padding: 0, minHeight: 60 }} >
       <div className={`${this.props.className}-nav`}>
               <span>
                 <img
@@ -277,14 +230,12 @@ class App extends React.Component {
             onSearch={value => console.log(value)} 
             enterButton />
           </div>
-      </Header> 
+      </Header>   
       <Content style={{ margin: '-10px 30px 0', background: '#E8E4E4'}}>
           
-          <Divider orientation="left"><b>รายชื่อ</b></Divider>
-            <Row justify="center" align="top">
-            <Col span={15}>
-            <div className="site-layout-background" style={{ padding: 16, background: '#E8E4E4', minHeight: 500 ,marginRight:'80px',marginLeft:'-50px'}}>
-            <TableContext.Provider value={this.state.isPageTween}>
+          <Divider orientation="left"><b>ลบรายชื่อแพทย์</b></Divider>
+        <div className="site-layout-background" style={{ padding: 16, background: '#E8E4E4', minHeight: 500 , marginTop: '15px'}}>
+        <TableContext.Provider value={this.state.isPageTween}>
                 <Table
                   columns={this.columns}
                   pagination={{ pageSize: 8 }}
@@ -294,56 +245,7 @@ class App extends React.Component {
                   onChange={this.pageChange}
                 />
               </TableContext.Provider>
-              </div>
-            </Col>
-            <Col span={7} style={{background: 'white', marginTop: '16px', minHeight: 450, marginLeft: '-120px'}}>
-              <DemoBox value={40}>
-                <div style={{ display: 'flex'}}><h4 style={{margin: 10}}><b>ข้อมูลผู้ป่วยรายบุคคล</b></h4>
-                <Popover content={content} title="ประเภทผู้ป่วย" trigger="hover" icon={<InfoCircleOutlined />}>
-                <InfoCircleOutlined style={{margin: 10, marginLeft: 130}}/>
-                </Popover>
-                </div>
-                <div style={{margin: 10}}>
-                  <h5 >ชื่อ-นามสกุล</h5>
-                  <h5 >ปรับปรุงข้อมูลล่าสุด</h5>
-                </div>
-                <Row>
-                  <Col span={8} order={1} style={{background: '#03ADB8',color: "white"}}>
-                  <DemoBox value={100}>1</DemoBox>
-                      
-                    <center>SYS</center>
-                  </Col>                 
-                  <Col span={8} order={2} style={{background: '#03ADB8',color: "white"}}>
-                  <DemoBox value={100}>2</DemoBox>
-                    
-                    <center>DIA</center>
-                  </Col>
-                  <Col span={8} order={3} style={{background: '#2CA900',color: "white"}}>
-                  <DemoBox value={100}>3</DemoBox>
-                    <center>ความดันเลือด</center>
-                  </Col>
-                  <Col span={12} order={4} style={{background: '#068550',color: "white"}}>
-                  <DemoBox value={100}>4</DemoBox>
-                    
-                    <center>น้ำหนัก</center>
-                    </Col>
-                  <Col span={12} order={5} style={{background: '#403A2C',color: "white"}}>
-                  <DemoBox value={100}>5</DemoBox>
-                   
-                    <center>ส่วนสูง</center>
-                  </Col>                 
-                  <Col span={24} order={6} style={{background: '#636161',color: "white"}}>
-                  <DemoBox value={100}>6</DemoBox>
-                    
-                    <center>อุณหภูมิ</center>
-                  </Col>
-                </Row><br/>
-                <h4 style={{margin: 10}}>สถานะ</h4>
-                <center><button style={{background: 'black',color: 'white', width: '150px', height: '35px'}}>ดูข้อมูลทั้งหมด</button></center>
-              </DemoBox>
-            </Col>
-          </Row>
-        
+        </div>
       </Content>
       <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
     </Layout>
