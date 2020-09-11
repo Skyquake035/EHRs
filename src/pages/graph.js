@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './doctor.css';
 import { Layout } from 'antd';
 import Button from 'antd/lib/button';
 import PropTypes from 'prop-types';
@@ -16,7 +16,7 @@ const { Search } = Input;
 
 const { Header, Footer, Sider, Content } = Layout;
 
-class App extends React.Component {
+class graph extends React.Component {
   constructor(){
     super();
     this.state = {
@@ -195,4 +195,4 @@ class App extends React.Component {
   );
   }
 }
-export default App;
+export default graph;

@@ -1,39 +1,26 @@
 import React from 'react';
 import './App.css';
 import { Layout } from 'antd';
-import Table from 'antd/lib/table';
 import Button from 'antd/lib/button';
 import PropTypes from 'prop-types';
-import { TweenOneGroup } from 'rc-tween-one';
 import { Menu } from 'antd';
 import { Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
-import { EditOutlined, UserAddOutlined ,UserDeleteOutlined , InfoCircleOutlined } from '@ant-design/icons';
+import { EditOutlined, UserAddOutlined ,UserDeleteOutlined} from '@ant-design/icons';
 import { Input } from 'antd';
-import { Row, Col ,Divider } from 'antd';
-import { Popover } from 'antd';
-
-
-//523svsvdsfv
-const content = (
-  <div>
-    <p style={{color: 'red'}}>ผู้ป่วยฉุกเฉินวิกฤต</p>
-    <p style={{color: '#FFC300 '}}>ผู้ป่วยฉุกเฉินเร่งด่วน</p>
-    <p style={{color: 'green'}}>ผู้ป่วยฉุกเฉินแต่ไม่รุนแรง</p>
-    <p>ผู้ป่วยทั่วไป</p>
-  </div>
-);
-
-const DemoBox = props => <p className={`height-${props.value}`}>{props.children}</p>;
+import {
+  Form,
+  Select,
+  Row,
+  Col,
+  Divider,
+} from 'antd';
 
 const { Search } = Input;
 
 const { Header, Footer, Sider, Content } = Layout;
 
-const TableContext = React.createContext(false);
-
 class App extends React.Component {
-  
   static propTypes = {
     className: PropTypes.string,
   };
@@ -42,186 +29,6 @@ class App extends React.Component {
     className: 'table-enter-leave-demo',
   };
 
-  constructor(props) {
-    super(props);
-    this.columns = [
-      { title: 'รหัสผู้ป่วย', dataIndex: 'number', key: 'number' },
-      { title: 'คำนำหน้า', dataIndex: 'prefix', key: 'prefix' },
-      { title: 'ชื่อ', dataIndex: 'name', key: 'name' },
-      { title: 'นามสกุล', dataIndex: 'surname', key: 'surname' },
-    ];
-   
-   
-    this.enterAnim = [
-      {
-        opacity: 0, x: 30, backgroundColor: '#fffeee', duration: 0,
-      },
-      {
-        height: 0,
-        duration: 200,
-        type: 'from',
-        delay: 250,
-        ease: 'easeOutQuad',
-        onComplete: this.onEnd,
-      },
-      {
-        opacity: 1, x: 0, duration: 250, ease: 'easeOutQuad',
-      },
-      { delay: 1000, backgroundColor: '#fff' },
-    ];
-    this.pageEnterAnim = [
-      {
-        opacity: 0, duration: 0,
-      },
-      {
-        height: 0,
-        duration: 150,
-        type: 'from',
-        delay: 150,
-        ease: 'easeOutQuad',
-        onComplete: this.onEnd,
-      },
-      {
-        opacity: 1, duration: 150, ease: 'easeOutQuad',
-      },
-    ];
-    this.leaveAnim = [
-      { duration: 250, opacity: 0 },
-      { height: 0, duration: 200, ease: 'easeOutQuad' },
-    ];
-    this.pageLeaveAnim = [
-      { duration: 150, opacity: 0 },
-      { height: 0, duration: 150, ease: 'easeOutQuad' },
-    ];
-    this.data = [
-      {
-        key: 1,
-        number: 60090500000,
-        prefix: 'นาย',
-        name: 'John',
-        surname: 'Brown',
-      },
-      {
-        key: 2,
-        number: 60090500000,
-        prefix: 'นาย',
-        name: 'John',
-        surname: 'Brown',
-      },
-      {
-        key: 3,
-        number: 60090500000,
-        prefix: 'นาย',
-        name: 'John',
-        surname: 'Brown',
-      },
-      {
-        key: 4,
-        number: 60090500000,
-        prefix: 'นาย',
-        name: 'John',
-        surname: 'Brown',
-      },
-      {
-        key: 5,
-        number: 60090500000,
-        prefix: 'นาย',
-        name: 'John',
-        surname: 'Brown',
-      },
-      {
-        key: 6,
-        number: 60090500000,
-        prefix: 'นาย',
-        name: 'John',
-        surname: 'Brown',
-      },
-      {
-        key: 7,
-        number: 60090500000,
-        prefix: 'นาย',
-        name: 'John',
-        surname: 'Brown',
-      },
-      {
-        key: 8,
-        number: 60090500000,
-        prefix: 'นาย',
-        name: 'John',
-        surname: 'Brown',
-      },
-      {
-        key: 9,
-        number: 60090500000,
-        prefix: 'นาย',
-        name: 'John',
-        surname: 'Brown',
-      },
-      {
-        key: 10,
-        number: 60090500000,
-        prefix: 'นาย',
-        name: 'John',
-        surname: 'Brown',
-      },
-    ];
-
-    this.animTag = ($props) => {
-      return (
-        <TableContext.Consumer>
-          {(isPageTween) => {
-            return (
-              <TweenOneGroup
-                component="tbody"
-                enter={!isPageTween ? this.enterAnim : this.pageEnterAnim}
-                leave={!isPageTween ? this.leaveAnim : this.pageLeaveAnim}
-                appear={false}
-                exclusive
-                {...$props}
-              />
-            );
-          }}
-        </TableContext.Consumer>
-      );
-    };
-
-    this.state = {
-      data: this.data,
-      isPageTween: false,
-    };
-  }
-
-  onEnd = (e) => {
-    const dom = e.target;
-    dom.style.height = 'auto';
-  }
-
-  onAdd = () => {
-    const { data } = this.state;
-    const i = Math.round(Math.random() * (this.data.length - 1));
-    data.unshift({
-      key: Date.now(),
-      name: this.data[i].name,
-      age: this.data[i].age,
-      address: this.data[i].address,
-    });
-    this.setState({
-      data,
-      isPageTween: false,
-    });
-  };
-
-  onDelete = (key, e) => {
-    e.preventDefault();
-    const data = this.state.data.filter(item => item.key !== key);
-    this.setState({ data, isPageTween: false });
-  }
-
-  pageChange = () => {
-    this.setState({
-      isPageTween: true,
-    });
-  };
   render() {
   return (
 
@@ -236,10 +43,7 @@ class App extends React.Component {
         console.log(collapsed, type);
       }}
     >
-      <br/><br/><br/><center><Avatar className="picture" size={80} icon={<UserOutlined />} 
-      style={{
-        backgroundColor: '#03ADB8',
-      }} /></center>
+      <br/><br/><br/><center><Avatar className="picture" size={80} icon={<UserOutlined />} /></center>
       <br/><h2 style={{textAlign: 'center', color: 'white'}}>ชื่อ</h2>
       <h3 style={{textAlign: 'center' , color: 'white'}}>ตำแหน่ง</h3>
       <div className="logo" />
@@ -258,11 +62,9 @@ class App extends React.Component {
         </Menu.Item>
       </Menu>
       <br/><center><Button className="button" style={{ color:"white", marginTop: 70}}>ออกจากระบบ</Button></center>
-      
     </Sider>
-
     <Layout style={{background: '#E8E4E4'}}>
-      <Header className="site-layout-sub-header-background" style={{padding: 0, minHeight: 60 }} >
+    <Header className="site-layout-sub-header-background" style={{padding: 0, minHeight: 60 }} >
       <div className={`${this.props.className}-nav`}>
               <span>
                 <img
@@ -279,73 +81,217 @@ class App extends React.Component {
             onSearch={value => console.log(value)} 
             enterButton />
           </div>
-      </Header> 
+      </Header>   
       <Content style={{ margin: '-10px 30px 0', background: '#E8E4E4'}}>
           
-          <Divider orientation="left"><b>รายชื่อ</b></Divider>
-            <Row justify="center" align="top">
-            <Col span={15}>
-            <div className="site-layout-background" style={{ padding: 16, background: '#E8E4E4', minHeight: 500 ,marginRight:'80px',marginLeft:'-50px'}}>
-            <TableContext.Provider value={this.state.isPageTween}>
-                <Table
-                  columns={this.columns}
-                  pagination={{ pageSize: 8 }}
-                  dataSource={this.state.data}
-                  className={`${this.props.className}-table`}
-                  components={{ body: { wrapper: this.animTag } }}
-                  onChange={this.pageChange}
-                />
-              </TableContext.Provider>
-              </div>
-            </Col>
-            <Col span={7} style={{background: 'white', marginTop: '16px', minHeight: 450, marginLeft: '-120px'}}>
-              <DemoBox value={40}>
-                <div style={{ display: 'flex'}}><h4 style={{margin: 10}}><b>ข้อมูลผู้ป่วยรายบุคคล</b></h4>
-                <Popover content={content} title="ประเภทผู้ป่วย" trigger="hover" icon={<InfoCircleOutlined />}>
-                <InfoCircleOutlined style={{margin: 10, marginLeft: 130}}/>
-                </Popover>
-                </div>
-                <div style={{margin: 10}}>
-                  <h5 >ชื่อ-นามสกุล</h5>
-                  <h5 >ปรับปรุงข้อมูลล่าสุด</h5>
-                </div>
-                <Row>
-                  <Col span={8} order={1} style={{background: '#03ADB8',color: "white"}}>
-                  <DemoBox value={100}>1</DemoBox>
-                      
-                    <center>SYS</center>
-                  </Col>                 
-                  <Col span={8} order={2} style={{background: '#03ADB8',color: "white"}}>
-                  <DemoBox value={100}>2</DemoBox>
-                    
-                    <center>DIA</center>
-                  </Col>
-                  <Col span={8} order={3} style={{background: '#2CA900',color: "white"}}>
-                  <DemoBox value={100}>3</DemoBox>
-                    <center>ความดันเลือด</center>
-                  </Col>
-                  <Col span={12} order={4} style={{background: '#068550',color: "white"}}>
-                  <DemoBox value={100}>4</DemoBox>
-                    
-                    <center>น้ำหนัก</center>
-                    </Col>
-                  <Col span={12} order={5} style={{background: '#403A2C',color: "white"}}>
-                  <DemoBox value={100}>5</DemoBox>
-                   
-                    <center>ส่วนสูง</center>
-                  </Col>                 
-                  <Col span={24} order={6} style={{background: '#636161',color: "white"}}>
-                  <DemoBox value={100}>6</DemoBox>
-                    
-                    <center>อุณหภูมิ</center>
-                  </Col>
-                </Row><br/>
-                <h4 style={{margin: 10}}>สถานะ</h4>
-                <center><button style={{background: 'black',color: 'white', width: '150px', height: '35px'}}>ดูข้อมูลทั้งหมด</button></center>
-              </DemoBox>
-            </Col>
-          </Row>
-        
+          
+              <Divider orientation="left"><b>แก้ไขข้อมูลผู้ป่วย</b></Divider>
+        <div className="site-layout-background" style={{ padding: 16, background: '#FDFEFE', minHeight: 500, margin: '50px'}}>
+        <h4 style={{margin: 28}}><b>ข้อมูลการลงทะเบียน</b></h4>
+          <Form
+            labelCol={{
+              span: 4,
+            }}
+            wrapperCol={{
+              span: 14,
+            }}
+            layout="horizontal"
+          >
+            <div style={{marginLeft: 30}}>
+            <Row>
+              <Col span={12}><Form.Item style={{width: 700}}>
+              <label htmlFor="username">ชื่อผู้ใช้งาน</label>
+                <Input />
+              </Form.Item></Col>
+              <Col span={12}><Form.Item style={{width: 700}}>
+              <label htmlFor="password">รหัสผ่าน</label>
+                <Input />
+              </Form.Item></Col>
+            </Row>
+              
+              <h4><b>ข้อมูลส่วนตัว</b></h4><br />
+              <Row>
+              <Col span={8}><Form.Item style={{width: 200}}>
+              <label htmlFor="prefix">คำนำหน้า</label>
+                <Select>
+                    <Select.Option value="mr">นาย</Select.Option>
+                    <Select.Option value="mrs">นาง</Select.Option>
+                    <Select.Option value="ms">นางสาว</Select.Option>
+                  </Select>
+              </Form.Item></Col>
+              <Col span={8}  pull={4}><Form.Item style={{width: 433}}>
+              <label htmlFor="name">ชื่อ</label>
+                <Input />
+              </Form.Item></Col>
+              <Col span={8} pull={4}><Form.Item style={{width: 433}}>
+              <label htmlFor="surname">นามสกุล</label>
+                <Input />
+              </Form.Item></Col>
+            </Row>
+
+            <Row>
+            <Col span={8}><Form.Item style={{width: 200}}>
+            <label htmlFor="age">อายุ</label>
+                <Input placeholder="ปี" style={{textAlign: "right"}} />
+              </Form.Item></Col>
+              <Col span={8}  pull={2}><Form.Item style={{width: 300}}>
+              <label htmlFor="weight">น้ำหนัก</label>
+                <Input placeholder="กิโลกรัม" style={{textAlign: "right"}} />
+              </Form.Item></Col>
+              <Col span={8}  pull={4}><Form.Item style={{width: 300}}>
+              <label htmlFor="height">ส่วนสูง</label>
+                <Input placeholder="เซนติเมตร" style={{textAlign: "right"}} />
+              </Form.Item></Col>
+            </Row>
+
+            <Row>
+            <Col span={8}><Form.Item style={{width: 700}}>
+            <label htmlFor="location">ที่อยู่ปัจจุบัน</label>
+                <Input />
+              </Form.Item></Col>
+              <Col span={8} push={4}><Form.Item style={{width: 200}}>
+              <label htmlFor="district1">ตำบล</label>
+                <Input/>
+              </Form.Item></Col>
+              <Col span={8}><Form.Item style={{width: 200}}>
+              <label htmlFor="district2">อำเภอ</label>
+                <Input/>
+              </Form.Item></Col>  
+            </Row>
+
+            <Row>
+            <Col span={8}><Form.Item style={{width: 300}}>
+            <label htmlFor="province">จังหวัด</label>
+              <Select>
+                <Select.Option value="กรุงเทพมหานคร">กรุงเทพมหานคร</Select.Option>
+                <Select.Option value="กระบี่">กระบี่</Select.Option>
+                <Select.Option value="กาญจนบุรี">กาญจนบุรี</Select.Option>
+                <Select.Option value="กาฬสินธุ์">กาฬสินธุ์</Select.Option>
+                <Select.Option value="กำแพงเพชร">กำแพงเพชร</Select.Option>
+                <Select.Option value="ขอนแก่น">ขอนแก่น</Select.Option>
+                <Select.Option value="จันทบุรี">จันทบุรี</Select.Option>
+                <Select.Option value="ฉะเชิงเทรา">ฉะเชิงเทรา</Select.Option>
+                <Select.Option value="ชลบุรี">ชลบุรี</Select.Option>
+                <Select.Option value="ชัยนาท">ชัยนาท</Select.Option>
+                <Select.Option value="ชัยภูมิ">ชัยภูมิ</Select.Option>
+                <Select.Option value="ชุมพร">ชุมพร</Select.Option>
+                <Select.Option value="เชียงราย">เชียงราย</Select.Option>
+                <Select.Option value="เชียงใหม่">เชียงใหม่</Select.Option>
+                <Select.Option value="ตรัง">ตรัง</Select.Option>
+                <Select.Option value="ตราด">ตราด</Select.Option>
+                <Select.Option value="ตาก">ตาก</Select.Option>
+                <Select.Option value="นครนายก">นครนายก</Select.Option>
+                <Select.Option value="นครปฐม">นครปฐม</Select.Option>
+                <Select.Option value="นครพนม">นครพนม</Select.Option>
+                <Select.Option value="นครราชสีมา">นครราชสีมา</Select.Option>
+                <Select.Option value="นครศรีธรรมราช">นครศรีธรรมราช</Select.Option>
+                <Select.Option value="นครสวรรค์">นครสวรรค์</Select.Option>
+                <Select.Option value="นนทบุรี">นนทบุรี</Select.Option>
+                <Select.Option value="นราธิวาส">นราธิวาส</Select.Option>
+                <Select.Option value="น่าน">น่าน</Select.Option>
+                <Select.Option value="บึงกาฬ">บึงกาฬ</Select.Option>
+                <Select.Option value="บุรีรัมย์">บุรีรัมย์</Select.Option>
+                <Select.Option value="ปทุมธานี">ปทุมธานี</Select.Option>
+                <Select.Option value="ประจวบคีรีขันธ์">ประจวบคีรีขันธ์</Select.Option>
+                <Select.Option value="ปราจีนบุรี">ปราจีนบุรี</Select.Option>
+                <Select.Option value="ปัตตานี">ปัตตานี</Select.Option>
+                <Select.Option value="พระนครศรีอยุธยา">พระนครศรีอยุธยา</Select.Option>
+                <Select.Option value="พังงา">พังงา</Select.Option>
+                <Select.Option value="พัทลุง">พัทลุง</Select.Option>
+                <Select.Option value="พิจิตร">พิจิตร</Select.Option>
+                <Select.Option value="พิษณุโลก">พิษณุโลก</Select.Option>
+                <Select.Option value="เพชรบุรี">เพชรบุรี</Select.Option>
+                <Select.Option value="เพชรบูรณ์">เพชรบูรณ์</Select.Option>
+                <Select.Option value="แพร่">แพร่</Select.Option>
+                <Select.Option value="พะเยา">พะเยา</Select.Option>
+                <Select.Option value="ภูเก็ต">ภูเก็ต</Select.Option>
+                <Select.Option value="มหาสารคาม">มหาสารคาม</Select.Option>
+                <Select.Option value="มุกดาหาร">มุกดาหาร</Select.Option>
+                <Select.Option value="แม่ฮ่องสอน">แม่ฮ่องสอน</Select.Option>
+                <Select.Option value="ยะลา">ยะลา</Select.Option>
+                <Select.Option value="ยโสธร">ยโสธร</Select.Option>
+                <Select.Option value="ร้อยเอ็ด">ร้อยเอ็ด</Select.Option>
+                <Select.Option value="ระนอง">ระนอง</Select.Option>
+                <Select.Option value="ระยอง">ระยอง</Select.Option>
+                <Select.Option value="ราชบุรี">ราชบุรี</Select.Option>
+                <Select.Option value="ลพบุรี">ลพบุรี</Select.Option>
+                <Select.Option value="ลำปาง">ลำปาง</Select.Option>
+                <Select.Option value="ลำพูน">ลำพูน</Select.Option>
+                <Select.Option value="เลย">เลย</Select.Option>
+                <Select.Option value="ศรีสะเกษ">ศรีสะเกษ</Select.Option>
+                <Select.Option value="สกลนคร">สกลนคร</Select.Option>
+                <Select.Option value="สงขลา">สงขลา</Select.Option>
+                <Select.Option value="สตูล">สตูล</Select.Option>
+                <Select.Option value="สมุทรปราการ">สมุทรปราการ</Select.Option>
+                <Select.Option value="สมุทรสงคราม">สมุทรสงคราม</Select.Option>
+                <Select.Option value="สมุทรสาคร">สมุทรสาคร</Select.Option>
+                <Select.Option value="สระแก้ว">สระแก้ว</Select.Option>
+                <Select.Option value="สระบุรี">สระบุรี</Select.Option>
+                <Select.Option value="สิงห์บุรี">สิงห์บุรี</Select.Option>
+                <Select.Option value="สุโขทัย">สุโขทัย</Select.Option>
+                <Select.Option value="สุพรรณบุรี">สุพรรณบุรี</Select.Option>
+                <Select.Option value="สุราษฎร์ธานี">สุราษฎร์ธานี</Select.Option>
+                <Select.Option value="สุรินทร์">สุรินทร์</Select.Option>
+                <Select.Option value="หนองคาย">หนองคาย</Select.Option>
+                <Select.Option value="หนองบัวลำภู">หนองบัวลำภู</Select.Option>
+                <Select.Option value="อ่างทอง">อ่างทอง</Select.Option>
+                <Select.Option value="อุดรธานี">อุดรธานี</Select.Option>
+                <Select.Option value="อุทัยธานี">อุทัยธานี</Select.Option>
+                <Select.Option value="อุตรดิตถ์">อุตรดิตถ์</Select.Option>
+                <Select.Option value="อุบลราชธานี">อุบลราชธานี</Select.Option>
+                <Select.Option value="อำนาจเจริญ">อำนาจเจริญ</Select.Option>
+              </Select>
+              </Form.Item></Col>
+              <Col span={8} pull={2}><Form.Item style={{width: 300}}>
+              <label htmlFor="postalCode">รหัสไปรษณีย์</label>
+                <Input/>
+              </Form.Item></Col>
+              <Col span={8} pull={4}><Form.Item style={{width: 300}}>
+              <label htmlFor="house">เบอร์บ้าน</label>
+                <Input/>
+              </Form.Item></Col>  
+            </Row>
+
+            <Row>
+            <Col span={12}><Form.Item style={{width: 500}}>
+            <label htmlFor="number">เบอร์โทรศัพท์มือถือ</label>
+                <Input />
+              </Form.Item></Col>
+              <Col span={12}><Form.Item style={{width: 500}}>
+              <label htmlFor="email">อีเมล</label>
+                <Input/>
+              </Form.Item></Col>
+            </Row>
+
+            <Row>
+            <Col span={24}><Form.Item style={{width: 700}}>
+            <label htmlFor="disease">โรคประจำตัว</label>
+                <Input />
+              </Form.Item></Col>
+            </Row>
+
+            <Row>
+            <Col span={12}><Form.Item style={{width: 500}}>
+            <label htmlFor="drug">ยาที่แพ้</label>
+                <Input />
+              </Form.Item></Col>
+            <Col span={12}><Form.Item style={{width: 500}}>
+            <label htmlFor="food">อาหารที่แพ้</label>
+                <Input />
+              </Form.Item></Col>
+            </Row>
+      
+            <h4><b>ข้อมูลทางการแพทย์</b></h4><br />
+            <Form.Item style={{width: 1500}}>
+            <label htmlFor="diagnosis">การวินิฉัยโรค</label>
+              <Input />
+            </Form.Item>
+            <br/><Form.Item>
+              <Button className="button" style={{ color:"white" ,marginLeft: "70%" }}>ยืนยันการแก้ไขข้อมูล</Button>
+            </Form.Item>
+            </div>
+          </Form>
+        </div>
       </Content>
       <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
     </Layout>

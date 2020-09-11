@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import "./App.css";
+import "./forget.css";
 import { Layout } from 'antd';
 
 const { Footer } = Layout;
 
-class App extends Component {
+class forget extends Component {
 
 
   render() {
@@ -24,4 +24,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default forget;

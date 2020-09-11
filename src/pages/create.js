@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./App.css";
+import "./create.css";
 import { Select, Layout } from 'antd';
 
 const { Footer } = Layout;
@@ -40,7 +40,7 @@ function onSearch(val) {
   console.log('search:', val);
 }
 
-class App extends Component {
+class create extends Component {
   constructor(props) {
     super(props);
 
@@ -285,4 +285,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default create;

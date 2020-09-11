@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './doctor.css';
 import { Layout } from 'antd';
 import Button from 'antd/lib/button';
 import PropTypes from 'prop-types';
@@ -20,7 +20,7 @@ const { Search } = Input;
 
 const { Header, Footer, Sider, Content } = Layout;
 
-class App extends React.Component {
+class edit extends React.Component {
   static propTypes = {
     className: PropTypes.string,
   };
@@ -287,7 +287,7 @@ class App extends React.Component {
               <Input />
             </Form.Item>
             <br/><Form.Item>
-              <Button className="button" style={{ color:"white" ,marginLeft: "75%" }}>ยืนยันการแก้ไขข้อมูล</Button>
+              <Button className="button" style={{ color:"white" ,marginLeft: "70%" }}>ยืนยันการแก้ไขข้อมูล</Button>
             </Form.Item>
             </div>
           </Form>
@@ -300,4 +300,4 @@ class App extends React.Component {
   );
   }
 }
-export default App;
+export default edit;

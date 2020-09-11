@@ -20,7 +20,7 @@ const { Search } = Input;
 
 const { Header, Footer, Sider, Content } = Layout;
 
-class App extends React.Component {
+class input extends React.Component {
   static propTypes = {
     className: PropTypes.string,
   };
@@ -289,7 +289,7 @@ class App extends React.Component {
               <Input />
             </Form.Item>
             <br/><Form.Item>
-              <Button className="button" style={{ color:"white" ,marginLeft: "75%" }}>บันทึกข้อมูล</Button>
+              <Button className="button" style={{ color:"white" ,marginLeft: "70%" }}>บันทึกข้อมูล</Button>
             </Form.Item>
             </div>
           </Form>
@@ -302,4 +302,4 @@ class App extends React.Component {
   );
   }
 }
-export default App;
+export default input;

@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './doctor.css';
 import { Layout } from 'antd';
 import Table from 'antd/lib/table';
 import Button from 'antd/lib/button';
@@ -18,7 +18,7 @@ const { Header, Footer, Sider, Content } = Layout;
 
 const TableContext = React.createContext(false);
 
-class App extends React.Component {
+class doctor extends React.Component {
   static propTypes = {
     className: PropTypes.string,
   };
@@ -254,4 +254,4 @@ class App extends React.Component {
   );
   }
 }
-export default App;
+export default doctor;

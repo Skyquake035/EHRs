@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './member.css';
 import { Layout } from 'antd';
 import Table from 'antd/lib/table';
 import Button from 'antd/lib/button';
@@ -30,7 +30,7 @@ const { Header, Footer, Sider, Content } = Layout;
 
 const TableContext = React.createContext(false);
 
-class App extends React.Component {
+class member extends React.Component {
   
   static propTypes = {
     className: PropTypes.string,
@@ -352,4 +352,4 @@ class App extends React.Component {
   );
   }
 }
-export default App;
+export default member;

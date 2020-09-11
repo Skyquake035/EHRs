@@ -1,5 +1,5 @@
 import React, { Component } from "./node_modules/react";
-import "./App.css";
+import "./login.css";
 import { Layout } from './node_modules/antd';
 
 const { Footer } = Layout;
@@ -20,7 +20,7 @@ const formValid = ({ formErrors, ...rest }) => {
   return valid;
 };
 
-class App extends Component {
+class login extends Component {
   constructor(props) {
     super(props);
 
@@ -111,4 +111,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default login;
