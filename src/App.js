@@ -30,7 +30,7 @@ class graph extends React.Component {
   }
 
   getChartData(){
-    // Ajax calls here
+    // Ajax calls here.
     this.setState({
       chartData:{
         labels: ['Boston', 'Worcester', 'Springfield', 'Lowell', 'Cambridge', 'New Bedford'],
