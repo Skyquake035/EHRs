@@ -18,13 +18,14 @@ class Head extends React.Component {
 
   render() {
   return (
-    <div>
+    <div style={{marginTop:'4px'}}>
         <Header className="site-layout-sub-header-background" style={{padding: 0, minHeight: 60 }} >
         <div className={`${this.props.className}-nav`}>
             <span><img style={{margin: '6px'}} height="50" alt="img" src="../images/logo.PNG"/></span>
         </div>
         <div className={`${this.props.className}-action-bar`}>
-          <Search           
+          <Search  
+            style={{marginLeft: '-40px'}}         
             placeholder="ค้นหา" 
             onSearch={value => console.log(value)} 
             enterButton />

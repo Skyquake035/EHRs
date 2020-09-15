@@ -1,6 +1,6 @@
-import React, { Component } from "./node_modules/react";
-import "./login.css";
-import { Layout } from './node_modules/antd';
+import React, { Component } from "react";
+import "./Login.css";
+import { Layout } from 'antd';
 
 const { Footer } = Layout;
 
@@ -20,7 +20,7 @@ const formValid = ({ formErrors, ...rest }) => {
   return valid;
 };
 
-class login extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
 
@@ -111,4 +111,4 @@ class login extends Component {
   }
 }
 
-export default login;
+export default Login;

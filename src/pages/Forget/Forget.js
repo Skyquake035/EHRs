@@ -4,7 +4,7 @@ import { Layout } from 'antd';
 
 const { Footer } = Layout;
 
-class forget extends Component {
+class Forget extends Component {
 
 
   render() {
@@ -24,4 +24,4 @@ class forget extends Component {
   }
 }
 
-export default forget;
+export default Forget;

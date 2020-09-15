@@ -1,40 +1,28 @@
 import React from 'react';
-import './doctor.css';
-import { Layout } from 'antd';
 import Table from 'antd/lib/table';
-import Button from 'antd/lib/button';
-import PropTypes from 'prop-types';
 import { TweenOneGroup } from 'rc-tween-one';
 import { Divider } from 'antd';
-import { Menu } from 'antd';
-import { Avatar } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
-import { EditOutlined, UserAddOutlined ,UserDeleteOutlined} from '@ant-design/icons';
-import { Input } from 'antd';
-
-const { Search } = Input;
-
-const { Header, Footer, Sider, Content } = Layout;
+import PropTypes from 'prop-types';
+import "./DeleteDoctor.css";
 
 const TableContext = React.createContext(false);
 
-class doctor extends React.Component {
-  static propTypes = {
-    className: PropTypes.string,
-  };
-
-  static defaultProps = {
-    className: 'table-enter-leave-demo',
-  };
-
+class DeleteDoctor extends React.Component {
+    static propTypes = {
+        className: PropTypes.string,
+      };
+    
+      static defaultProps = {
+        className: 'table-enter-leave-demo',
+      };
   constructor(props) {
     super(props);
     this.columns = [
-      { title: 'รหัสผู้ป่วย', dataIndex: 'number', key: 'number' },
+      { title: 'รหัสประจำตัวแพทย์', dataIndex: 'number', key: 'number' },
       { title: 'คำนำหน้า', dataIndex: 'prefix', key: 'prefix' },
       { title: 'ชื่อ', dataIndex: 'name', key: 'name' },
       { title: 'นามสกุล', dataIndex: 'surname', key: 'surname' },
-      {
+      { 
         title: 'การปรับปรุงแก้ไขข้อมูล',
         dataIndex: '',
         key: 'x',
@@ -43,12 +31,11 @@ class doctor extends React.Component {
             className={`${this.props.className}-delete`}
             onClick={(e) => { this.onDelete(record.key, e); }}
           >
-          <center style={{marginRight: 40}}>ลบข้อมูล</center>  
+          <center style={{marginRight: 40}}>ลบรายชื่อ</center>  
           </span>
         ),
       },
     ];
-   
    
     this.enterAnim = [
       {
@@ -180,62 +167,11 @@ class doctor extends React.Component {
   };
   render() {
   return (
-
-    <Layout style={{minHeight: 700}}>
-    <Sider
-      breakpoint="lg"
-      collapsedWidth="0"
-      onBreakpoint={broken => {
-        console.log(broken);
-      }}
-      onCollapse={(collapsed, type) => {
-        console.log(collapsed, type);
-      }}
-    >
-      <br/><br/><br/><center><Avatar className="picture" size={80} icon={<UserOutlined />} /></center>
-      <br/><h2 style={{textAlign: 'center', color: 'white'}}>ชื่อ</h2>
-      <h3 style={{textAlign: 'center' , color: 'white'}}>ตำแหน่ง</h3>
-      <div className="logo" />
-      <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} >
-        <Menu.Item key="1" icon={<UserOutlined />} >
-          รายชื่อผู้ป่วย
-        </Menu.Item>
-        <Menu.Item key="2" icon={<UserAddOutlined />}>
-          เพิ่มรายชื่อผู้ป่วย
-        </Menu.Item>
-        <Menu.Item key="3" icon={<EditOutlined />}>
-          แก้/ลบรายชื่อผู้ป่วย
-        </Menu.Item>
-        <Menu.Item key="4" icon={<UserDeleteOutlined />}>
-          ลบรายชื่อแพทย์
-        </Menu.Item>
-      </Menu>
-      <br/><center><Button className="button" style={{ color:"white", marginTop: 70}}>ออกจากระบบ</Button></center>
-    </Sider>
-    <Layout style={{background: '#E8E4E4'}}>
-      <Header className="site-layout-sub-header-background" style={{padding: 0, minHeight: 60 }} >
-      <div className={`${this.props.className}-nav`}>
-              <span>
-                <img
-                style={{margin: '6px'}}
-                  height="50"
-                  alt="img"
-                  src="../images/logo.PNG"
-                />
-              </span>
-            </div>
-            <div className={`${this.props.className}-action-bar`}>
-          <Search           
-            placeholder="ค้นหา" 
-            onSearch={value => console.log(value)} 
-            enterButton />
-          </div>
-      </Header> 
-      <Content style={{ margin: '-10px 30px 0', background: '#E8E4E4'}}>
-
-          <Divider orientation="left"><b>แก้ไข/ลบรายชื่อผู้ป่วย</b></Divider>
-        <div className="site-layout-background" style={{ padding: 16, background: '#E8E4E4', minHeight: 500, marginTop: '15px'}}>
-        <TableContext.Provider value={this.state.isPageTween}>
+    <div style={{ margin: '-10px 30px 0', background: '#E8E4E4'}}> 
+        <Divider orientation="left"><b>ลบรายชื่อแพทย์</b></Divider>
+        <div className="site-layout-background" 
+        style={{ padding: 16, background: '#E8E4E4', minHeight: 500 , marginTop: '15px'}}>
+            <TableContext.Provider value={this.state.isPageTween}>
                 <Table
                   columns={this.columns}
                   pagination={{ pageSize: 8 }}
@@ -244,14 +180,10 @@ class doctor extends React.Component {
                   components={{ body: { wrapper: this.animTag } }}
                   onChange={this.pageChange}
                 />
-              </TableContext.Provider>
+            </TableContext.Provider>
         </div>
-      </Content>
-      <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
-    </Layout>
-  </Layout>
-
+    </div>
   );
   }
 }
-export default doctor;
+export default DeleteDoctor;

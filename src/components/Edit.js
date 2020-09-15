@@ -1,26 +1,10 @@
 import React from 'react';
-import './App.css';
-import { Layout } from 'antd';
 import Button from 'antd/lib/button';
 import PropTypes from 'prop-types';
-import { Menu } from 'antd';
-import { Avatar } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
-import { EditOutlined, UserAddOutlined ,UserDeleteOutlined} from '@ant-design/icons';
 import { Input } from 'antd';
-import {
-  Form,
-  Select,
-  Row,
-  Col,
-  Divider,
-} from 'antd';
+import { Form, Select, Row, Col, Divider,} from 'antd';
 
-const { Search } = Input;
-
-const { Header, Footer, Sider, Content } = Layout;
-
-class input extends React.Component {
+class Edit extends React.Component {
   static propTypes = {
     className: PropTypes.string,
   };
@@ -30,66 +14,12 @@ class input extends React.Component {
   };
 
   render() {
-  return (
-
-    <Layout style={{minHeight: 700}}>
-    <Sider
-      breakpoint="lg"
-      collapsedWidth="0"
-      onBreakpoint={broken => {
-        console.log(broken);
-      }}
-      onCollapse={(collapsed, type) => {
-        console.log(collapsed, type);
-      }}
-    >
-      <br/><br/><br/><center><Avatar className="picture" size={80} icon={<UserOutlined />} style={{
-        backgroundColor: '#03ADB8',
-      }}/></center>
-      <br/><h2 style={{textAlign: 'center', color: 'white'}}>ชื่อ</h2>
-      <h3 style={{textAlign: 'center' , color: 'white'}}>ตำแหน่ง</h3>
-      <div className="logo" />
-      <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} >
-        <Menu.Item key="1" icon={<UserOutlined />} >
-          รายชื่อผู้ป่วย
-        </Menu.Item>
-        <Menu.Item key="2" icon={<UserAddOutlined />}>
-          เพิ่มรายชื่อผู้ป่วย
-        </Menu.Item>
-        <Menu.Item key="3" icon={<EditOutlined />}>
-          แก้/ลบรายชื่อผู้ป่วย
-        </Menu.Item>
-        <Menu.Item key="4" icon={<UserDeleteOutlined />}>
-          ลบรายชื่อแพทย์
-        </Menu.Item>
-      </Menu>
-      <br/><center><Button className="button" style={{ color:"white", marginTop: 70}}>ออกจากระบบ</Button></center>
-    </Sider>
-    <Layout style={{background: '#E8E4E4'}}>
-      <Header className="site-layout-sub-header-background" style={{padding: 0, minHeight: 60 }} >
-      <div className={`${this.props.className}-nav`}>
-              <span>
-                <img
-                style={{margin: '6px'}}
-                  height="50"
-                  alt="img"
-                  src="../images/logo.PNG"
-                />
-              </span>
-            </div>
-            <div className={`${this.props.className}-action-bar`}>
-          <Search           
-            placeholder="ค้นหา" 
-            onSearch={value => console.log(value)} 
-            enterButton />
-          </div>
-      </Header> 
-      
-      <Content style={{ margin: '-10px 30px 0', background: '#E8E4E4'}}>
-          
-        <Divider orientation="left"><b>เพิ่มรายชื่อผู้ป่วย</b></Divider>
-        <div className="site-layout-background" style={{ padding: 16, background: '#FDFEFE', minHeight: 500, margin: '50px'}}>
-        <h4 style={{margin: 28}}><b>ข้อมูลการลงทะเบียน</b></h4>
+  return (     
+      <div style={{ margin: '-10px 30px 0', background: '#E8E4E4'}}> 
+        <Divider orientation="left"><b>แก้ไขข้อมูลผู้ป่วย</b></Divider>
+        <div className="site-layout-background" 
+        style={{ padding: 8, background: '#FDFEFE', minHeight: 500, margin: '0px 65px 0'}}>
+        <h4 style={{margin: '20px 28px 6px'}}><b>ข้อมูลการลงทะเบียน</b></h4><br/>
           <Form
             labelCol={{
               span: 4,
@@ -130,7 +60,6 @@ class input extends React.Component {
                 <Input />
               </Form.Item></Col>
             </Row>
-
             <Row>
             <Col span={8}><Form.Item style={{width: 200}}>
             <label htmlFor="age">อายุ</label>
@@ -145,7 +74,6 @@ class input extends React.Component {
                 <Input placeholder="เซนติเมตร" style={{textAlign: "right"}} />
               </Form.Item></Col>
             </Row>
-
             <Row>
             <Col span={8}><Form.Item style={{width: 700}}>
             <label htmlFor="location">ที่อยู่ปัจจุบัน</label>
@@ -160,7 +88,6 @@ class input extends React.Component {
                 <Input/>
               </Form.Item></Col>  
             </Row>
-
             <Row>
             <Col span={8}><Form.Item style={{width: 300}}>
             <label htmlFor="province">จังหวัด</label>
@@ -253,7 +180,6 @@ class input extends React.Component {
                 <Input/>
               </Form.Item></Col>  
             </Row>
-
             <Row>
             <Col span={12}><Form.Item style={{width: 500}}>
             <label htmlFor="number">เบอร์โทรศัพท์มือถือ</label>
@@ -264,14 +190,12 @@ class input extends React.Component {
                 <Input/>
               </Form.Item></Col>
             </Row>
-
             <Row>
             <Col span={24}><Form.Item style={{width: 700}}>
             <label htmlFor="disease">โรคประจำตัว</label>
                 <Input />
               </Form.Item></Col>
             </Row>
-
             <Row>
             <Col span={12}><Form.Item style={{width: 500}}>
             <label htmlFor="drug">ยาที่แพ้</label>
@@ -281,25 +205,20 @@ class input extends React.Component {
             <label htmlFor="food">อาหารที่แพ้</label>
                 <Input />
               </Form.Item></Col>
-            </Row>
-      
+            </Row>     
             <h4><b>ข้อมูลทางการแพทย์</b></h4><br />
-            <Form.Item style={{width: 1500}}>
+            <Form.Item style={{width: 1480}}>
             <label htmlFor="diagnosis">การวินิฉัยโรค</label>
               <Input />
             </Form.Item>
             <br/><Form.Item>
-              <Button className="button" style={{ color:"white" ,marginLeft: "70%" }}>บันทึกข้อมูล</Button>
+              <Button className="button" style={{ color:"white" ,marginLeft: "70%" }}>ยืนยันการแก้ไขข้อมูล</Button>
             </Form.Item>
             </div>
           </Form>
         </div>
-      </Content>
-      <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
-    </Layout>
-  </Layout>
-
+    </div>
   );
   }
 }
-export default input;
+export default Edit;
