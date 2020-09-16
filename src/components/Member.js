@@ -212,7 +212,7 @@ class Member extends React.Component {
   render() {
   return (
     <div style={{ margin: '-10px 30px 0', background: '#E8E4E4'}}> 
-          <Divider orientation="left"><b>รายชื่อ</b></Divider>
+          <Divider orientation="left"><b>รายชื่อผู้ป่วย</b></Divider>
             <Row justify="center" align="top">
             <Col span={15}>
             <div className="site-layout-background" 

@@ -6,6 +6,7 @@ import { Menu } from 'antd';
 import { Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 import { EditOutlined, UserAddOutlined ,UserDeleteOutlined} from '@ant-design/icons';
+import { NavLink } from 'react-router-dom'
 
 const { Sider } = Layout;
 
@@ -38,10 +39,10 @@ class Navbar extends React.Component {
         <h3 style={{textAlign: 'center'}}>ตำแหน่ง</h3>
         <div className="logo" />
           <Menu theme="light" mode="inline" defaultSelectedKeys={['4']} >
-            <Menu.Item key="1" icon={<UserOutlined />} >รายชื่อผู้ป่วย</Menu.Item>
-            <Menu.Item key="2" icon={<UserAddOutlined />}>เพิ่มรายชื่อผู้ป่วย</Menu.Item>
-            <Menu.Item key="3" icon={<EditOutlined />}>แก้/ลบรายชื่อผู้ป่วย</Menu.Item>
-            <Menu.Item key="4" icon={<UserDeleteOutlined />}>ลบรายชื่อแพทย์</Menu.Item>
+            <Menu.Item key="1" icon={<UserOutlined />} ><NavLink exact to="/" >รายชื่อผู้ป่วย</NavLink></Menu.Item>
+            <Menu.Item key="2" icon={<UserAddOutlined />}><NavLink to="/add">เพิ่มรายชื่อผู้ป่วย</NavLink></Menu.Item>
+            <Menu.Item key="3" icon={<EditOutlined />}><NavLink to="/patient">แก้/ลบรายชื่อผู้ป่วย</NavLink></Menu.Item>
+            <Menu.Item key="4" icon={<UserDeleteOutlined />}><NavLink to="/delete">ลบรายชื่อแพทย์</NavLink></Menu.Item>
           </Menu>
           <br/><center><Button className="button" style={{ color:"white", marginTop: 70}}>ออกจากระบบ</Button></center>
         </Sider>       
