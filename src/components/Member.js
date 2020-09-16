@@ -1,5 +1,4 @@
 import React from 'react';
-import "./Member.css";
 import Table from 'antd/lib/table';
 import PropTypes from 'prop-types';
 import { TweenOneGroup } from 'rc-tween-one';

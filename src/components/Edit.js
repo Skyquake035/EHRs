@@ -4,46 +4,42 @@ import PropTypes from 'prop-types';
 import { Input } from 'antd';
 import { Form, Select, Row, Col, Divider,} from 'antd';
 
+const { TextArea } = Input;
 class Edit extends React.Component {
   static propTypes = {
     className: PropTypes.string,
   };
+  state = {
+    value: '',
+  };
 
-  static defaultProps = {
-    className: 'table-enter-leave-demo',
+  onChange = ({ target: { value } }) => {
+    this.setState({ value });
   };
 
   render() {
+
   return (     
       <div style={{ margin: '-10px 30px 0', background: '#E8E4E4'}}> 
         <Divider orientation="left"><b>แก้ไขข้อมูลผู้ป่วย</b></Divider>
-        <div className="site-layout-background" 
+        <div 
         style={{ padding: 8, background: '#FDFEFE', minHeight: 500, margin: '0px 65px 0'}}>
         <h4 style={{margin: '20px 28px 6px'}}><b>ข้อมูลการลงทะเบียน</b></h4><br/>
-          <Form
-            labelCol={{
-              span: 4,
-            }}
-            wrapperCol={{
-              span: 14,
-            }}
-            layout="horizontal"
-          >
+          
             <div style={{marginLeft: 30}}>
             <Row>
-              <Col span={12}><Form.Item style={{width: 700}}>
+              <Col span={9}><Form.Item >
               <label htmlFor="username">ชื่อผู้ใช้งาน</label>
                 <Input />
               </Form.Item></Col>
-              <Col span={12}><Form.Item style={{width: 700}}>
+              <Col span={9} push={4}><Form.Item >
               <label htmlFor="password">รหัสผ่าน</label>
                 <Input />
               </Form.Item></Col>
             </Row>
-              
               <h4><b>ข้อมูลส่วนตัว</b></h4><br />
               <Row>
-              <Col span={8}><Form.Item style={{width: 200}}>
+              <Col span={3}><Form.Item>
               <label htmlFor="prefix">คำนำหน้า</label>
                 <Select>
                     <Select.Option value="mr">นาย</Select.Option>
@@ -51,45 +47,45 @@ class Edit extends React.Component {
                     <Select.Option value="ms">นางสาว</Select.Option>
                   </Select>
               </Form.Item></Col>
-              <Col span={8}  pull={4}><Form.Item style={{width: 433}}>
+              <Col span={7} push={2}><Form.Item >
               <label htmlFor="name">ชื่อ</label>
                 <Input />
               </Form.Item></Col>
-              <Col span={8} pull={4}><Form.Item style={{width: 433}}>
+              <Col span={7} push={3}><Form.Item >
               <label htmlFor="surname">นามสกุล</label>
                 <Input />
               </Form.Item></Col>
             </Row>
             <Row>
-            <Col span={8}><Form.Item style={{width: 200}}>
+            <Col span={3}><Form.Item>
             <label htmlFor="age">อายุ</label>
                 <Input placeholder="ปี" style={{textAlign: "right"}} />
               </Form.Item></Col>
-              <Col span={8}  pull={2}><Form.Item style={{width: 300}}>
+              <Col span={4}  push={2}><Form.Item>
               <label htmlFor="weight">น้ำหนัก</label>
                 <Input placeholder="กิโลกรัม" style={{textAlign: "right"}} />
               </Form.Item></Col>
-              <Col span={8}  pull={4}><Form.Item style={{width: 300}}>
+              <Col span={4}  push={6}><Form.Item>
               <label htmlFor="height">ส่วนสูง</label>
                 <Input placeholder="เซนติเมตร" style={{textAlign: "right"}} />
               </Form.Item></Col>
             </Row>
             <Row>
-            <Col span={8}><Form.Item style={{width: 700}}>
+            <Col span={12}><Form.Item>
             <label htmlFor="location">ที่อยู่ปัจจุบัน</label>
-                <Input />
+            <TextArea autoSize><Input /></TextArea>
               </Form.Item></Col>
-              <Col span={8} push={4}><Form.Item style={{width: 200}}>
+              <Col span={4} push={1}><Form.Item>
               <label htmlFor="district1">ตำบล</label>
                 <Input/>
               </Form.Item></Col>
-              <Col span={8}><Form.Item style={{width: 200}}>
+              <Col span={4} push={2}><Form.Item>
               <label htmlFor="district2">อำเภอ</label>
                 <Input/>
               </Form.Item></Col>  
             </Row>
             <Row>
-            <Col span={8}><Form.Item style={{width: 300}}>
+            <Col span={4}><Form.Item>
             <label htmlFor="province">จังหวัด</label>
               <Select>
                 <Select.Option value="กรุงเทพมหานคร">กรุงเทพมหานคร</Select.Option>
@@ -171,51 +167,50 @@ class Edit extends React.Component {
                 <Select.Option value="อำนาจเจริญ">อำนาจเจริญ</Select.Option>
               </Select>
               </Form.Item></Col>
-              <Col span={8} pull={2}><Form.Item style={{width: 300}}>
+              <Col span={4} push={1}><Form.Item>
               <label htmlFor="postalCode">รหัสไปรษณีย์</label>
                 <Input/>
               </Form.Item></Col>
-              <Col span={8} pull={4}><Form.Item style={{width: 300}}>
+              <Col span={7} push={5}><Form.Item>
               <label htmlFor="house">เบอร์บ้าน</label>
                 <Input/>
               </Form.Item></Col>  
             </Row>
             <Row>
-            <Col span={12}><Form.Item style={{width: 500}}>
+            <Col span={9}><Form.Item >
             <label htmlFor="number">เบอร์โทรศัพท์มือถือ</label>
                 <Input />
               </Form.Item></Col>
-              <Col span={12}><Form.Item style={{width: 500}}>
+              <Col span={9} push={4}><Form.Item >
               <label htmlFor="email">อีเมล</label>
                 <Input/>
               </Form.Item></Col>
             </Row>
             <Row>
-            <Col span={24}><Form.Item style={{width: 700}}>
+            <Col span={9}><Form.Item>
             <label htmlFor="disease">โรคประจำตัว</label>
                 <Input />
               </Form.Item></Col>
             </Row>
             <Row>
-            <Col span={12}><Form.Item style={{width: 500}}>
+            <Col span={9}><Form.Item>
             <label htmlFor="drug">ยาที่แพ้</label>
                 <Input />
               </Form.Item></Col>
-            <Col span={12}><Form.Item style={{width: 500}}>
+            <Col span={9} push={4}><Form.Item>
             <label htmlFor="food">อาหารที่แพ้</label>
                 <Input />
               </Form.Item></Col>
             </Row>     
             <h4><b>ข้อมูลทางการแพทย์</b></h4><br />
-            <Form.Item style={{width: 1480}}>
+            <Col span={22}><Form.Item>
             <label htmlFor="diagnosis">การวินิฉัยโรค</label>
-              <Input />
-            </Form.Item>
-            <br/><Form.Item>
-              <Button className="button" style={{ color:"white" ,marginLeft: "70%" }}>ยืนยันการแก้ไขข้อมูล</Button>
-            </Form.Item>
+              <TextArea autoSize><Input /></TextArea>
+            </Form.Item></Col>
+            <br/><center><Col><Form.Item>
+              <Button className="button" style={{ color:"white"}}>ยืนยันการแก้ไขข้อมูล</Button>
+            </Form.Item></Col></center>
             </div>
-          </Form>
         </div>
     </div>
   );

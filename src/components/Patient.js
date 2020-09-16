@@ -3,22 +3,19 @@ import Table from 'antd/lib/table';
 import { TweenOneGroup } from 'rc-tween-one';
 import { Divider } from 'antd';
 import PropTypes from 'prop-types';
-import "./DeleteDoctor.css";
 
 const TableContext = React.createContext(false);
 
-class DeleteDoctor extends React.Component {
+class Patient extends React.Component {
     static propTypes = {
         className: PropTypes.string,
       };
     
-      static defaultProps = {
-        className: 'table-enter-leave-demo',
-      };
+      
   constructor(props) {
     super(props);
     this.columns = [
-      { title: 'รหัสประจำตัวแพทย์', dataIndex: 'number', key: 'number' },
+      { title: 'รหัสผู้ป่วย', dataIndex: 'number', key: 'number' },
       { title: 'คำนำหน้า', dataIndex: 'prefix', key: 'prefix' },
       { title: 'ชื่อ', dataIndex: 'name', key: 'name' },
       { title: 'นามสกุล', dataIndex: 'surname', key: 'surname' },
@@ -27,12 +24,12 @@ class DeleteDoctor extends React.Component {
         dataIndex: '',
         key: 'x',
         render: (text, record) => (
-          <span
+          <a><span
             className={`${this.props.className}-delete`}
             onClick={(e) => { this.onDelete(record.key, e); }}
           >
-          <center style={{marginRight: 40}}>ลบรายชื่อ</center>  
-          </span>
+          ลบรายชื่อ  
+          </span></a>
         ),
       },
     ];
@@ -168,9 +165,9 @@ class DeleteDoctor extends React.Component {
   render() {
   return (
     <div style={{ margin: '-10px 30px 0', background: '#E8E4E4'}}> 
-        <Divider orientation="left"><b>ลบรายชื่อแพทย์</b></Divider>
+        <Divider orientation="left"><b>แก้ไข/ลบรายชื่อผู้ป่วย</b></Divider>
         <div className="site-layout-background" 
-        style={{ padding: 16, background: '#E8E4E4', minHeight: 500 , marginTop: '15px'}}>
+        style={{ padding: 16, background: '#E8E4E4', minHeight: 500 , margin: '15px 50px 0'}}>
             <TableContext.Provider value={this.state.isPageTween}>
                 <Table
                   columns={this.columns}
@@ -186,4 +183,5 @@ class DeleteDoctor extends React.Component {
   );
   }
 }
-export default DeleteDoctor;
+export default Patient;
+

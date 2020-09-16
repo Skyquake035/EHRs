@@ -1,14 +1,15 @@
 import React from 'react';
+import './App.css';
 import { Layout } from 'antd';
 import Navbar from './components/Navbar';
 import Head from './components/Head';
 import Foot from './components/Foot';
-import DeleteDoctor from './components/DeleteDoctor/DeleteDoctor';
+import DeleteDoctor from './components/DeleteDoctor';
 import Edit from './components/Edit';
 import Graph from './components/Graph';
-import Member from './components/Member/Member';
+import Member from './components/Member';
 import Add from './components/Add';
-import Patient from './components/Patient/Patient';
+import Patient from './components/Patient';
 
 const { Content } = Layout;
 
@@ -20,7 +21,7 @@ class App extends React.Component {
       <Layout style={{background: '#E8E4E4' }}>
         <Head/>
         <Content style={{ margin: '0px 0px 0', background: '#E8E4E4',minHeight: 600}}>
-          <Member/>
+          <Patient/>  
         </Content>
         <Foot/> 
       </Layout>            

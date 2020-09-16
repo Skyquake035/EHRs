@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./Create.css";
 import { Select, Layout } from 'antd';
 
 const { Footer } = Layout;

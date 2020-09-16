@@ -3,18 +3,15 @@ import Table from 'antd/lib/table';
 import { TweenOneGroup } from 'rc-tween-one';
 import { Divider } from 'antd';
 import PropTypes from 'prop-types';
-import "./Patient.css";
 
 const TableContext = React.createContext(false);
 
-class Patient extends React.Component {
+class DeleteDoctor extends React.Component {
     static propTypes = {
         className: PropTypes.string,
       };
     
-      static defaultProps = {
-        className: 'table-enter-leave-demo',
-      };
+      
   constructor(props) {
     super(props);
     this.columns = [
@@ -27,12 +24,12 @@ class Patient extends React.Component {
         dataIndex: '',
         key: 'x',
         render: (text, record) => (
-          <span
+          <a><span
             className={`${this.props.className}-delete`}
             onClick={(e) => { this.onDelete(record.key, e); }}
           >
-          <center style={{marginRight: 40}}>ลบรายชื่อ</center>  
-          </span>
+          ลบรายชื่อ  
+          </span></a>
         ),
       },
     ];
@@ -168,9 +165,9 @@ class Patient extends React.Component {
   render() {
   return (
     <div style={{ margin: '-10px 30px 0', background: '#E8E4E4'}}> 
-        <Divider orientation="left"><b>แก้ไข/ลบรายชื่อผู้ป่วย</b></Divider>
+        <Divider orientation="left"><b>ลบรายชื่อแพทย์</b></Divider>
         <div className="site-layout-background" 
-        style={{ padding: 16, background: '#E8E4E4', minHeight: 500 , marginTop: '15px'}}>
+        style={{ padding: 16, background: '#E8E4E4', minHeight: 500 , margin: '15px 50px 0'}}>
             <TableContext.Provider value={this.state.isPageTween}>
                 <Table
                   columns={this.columns}
@@ -186,4 +183,4 @@ class Patient extends React.Component {
   );
   }
 }
-export default Patient;
+export default DeleteDoctor;
