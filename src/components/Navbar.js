@@ -38,7 +38,7 @@ class Navbar extends React.Component {
         <br/><h2 style={{textAlign: 'center'}}>ชื่อ</h2>
         <h3 style={{textAlign: 'center'}}>ตำแหน่ง</h3>
         <div className="logo" />
-          <Menu theme="light" mode="inline" defaultSelectedKeys={['4']} >
+          <Menu theme="light" mode="inline" defaultSelectedKeys={['1']} >
             <Menu.Item key="1" icon={<UserOutlined />} ><NavLink exact to="/" >รายชื่อผู้ป่วย</NavLink></Menu.Item>
             <Menu.Item key="2" icon={<UserAddOutlined />}><NavLink to="/add">เพิ่มรายชื่อผู้ป่วย</NavLink></Menu.Item>
             <Menu.Item key="3" icon={<EditOutlined />}><NavLink to="/patient">แก้/ลบรายชื่อผู้ป่วย</NavLink></Menu.Item>

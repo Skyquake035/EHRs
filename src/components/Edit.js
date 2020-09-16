@@ -3,6 +3,7 @@ import Button from 'antd/lib/button';
 import PropTypes from 'prop-types';
 import { Input } from 'antd';
 import { Form, Select, Row, Col, Divider,} from 'antd';
+import { NavLink } from 'react-router-dom'
 
 const { TextArea } = Input;
 class Edit extends React.Component {
@@ -208,7 +209,8 @@ class Edit extends React.Component {
               <TextArea autoSize><Input /></TextArea>
             </Form.Item></Col>
             <br/><center><Col><Form.Item>
-              <Button className="button" style={{ color:"white"}}>ยืนยันการแก้ไขข้อมูล</Button>
+              <Button className="button" style={{ color:"white"}}>
+                <NavLink to="/">ยืนยันการแก้ไขข้อมูล</NavLink></Button>
             </Form.Item></Col></center>
             </div>
         </div>

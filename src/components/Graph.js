@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Divider } from 'antd';
 import { Row, Col } from 'antd';
 import Chart from './Chart';
+import { NavLink } from 'react-router-dom';
 
 class Graph extends React.Component {
   constructor(){
@@ -62,11 +63,11 @@ class Graph extends React.Component {
         <Divider orientation="left"><b>เพิ่มรายชื่อผู้ป่วย</b></Divider>
         <div className="site-layout-background" 
         style={{ padding: 8, background: '#FDFEFE', minHeight: 500, margin: '0px 65px 0'}}>
-          <h4 style={{margin: 16}}><b>ข้อมูลการลงทะเบียน</b></h4><br />
-          <div style={{marginLeft: 16}}>
+          <div style={{margin: 20}}>
           <Row>
-            <Col span={12}>รหัสผู้ป่วย</Col>
-            <Col span={12}>ชื่อ-นามสกุล</Col>
+            <Col span={8}>รหัสผู้ป่วย</Col>
+            <Col span={8} push={4}>ชื่อ-นามสกุล</Col>
+            <Col span={8} push={4}><NavLink to="/edit"><a>แก้ไขข้อมูลผู้ป่วย</a></NavLink></Col>
           </Row>  
           <Row>
             <Col span={24} offset={12}>อายุ</Col>
@@ -110,8 +111,8 @@ class Graph extends React.Component {
                     <h4 style={{float: "right",color: "white"}}>องศาเซลเซียส</h4>
                     <center>อุณหภูมิ</center>
                   </Col>
-                </Row><br/>
-                <div style={{marginLeft: 16}}>
+                </Row>
+                <div style={{margin: 20}}>
                 <h4>สถิติค่าความดันเลือด</h4>
 
                 <Chart chartData={this.state.chartData} location="Massachusetts" legendPosition="bottom"/>

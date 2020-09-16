@@ -10,12 +10,7 @@ import Graph from './components/Graph';
 import Member from './components/Member';
 import Add from './components/Add';
 import Patient from './components/Patient';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { BrowserRouter as Router, Route,} from "react-router-dom";
 
 const { Content } = Layout;
 
@@ -39,7 +34,13 @@ class App extends React.Component {
           </Route>
           <Route path="/delete">
           <DeleteDoctor />
-        </Route>
+          </Route>
+          <Route path="/edit">
+          <Edit />
+          </Route>
+          <Route path="/graph">
+          <Graph />
+          </Route>
         </Content>
         <Foot/> 
       </Layout>            

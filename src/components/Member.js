@@ -5,6 +5,7 @@ import { TweenOneGroup } from 'rc-tween-one';
 import { InfoCircleOutlined } from '@ant-design/icons';
 import { Row, Col ,Divider } from 'antd';
 import { Popover } from 'antd';
+import { NavLink } from 'react-router-dom';
 
 const content = (
   <div>
@@ -272,7 +273,10 @@ class Member extends React.Component {
                   </Col>
                 </Row><br/>
                 <h4 style={{margin: 10}}>สถานะ</h4>
-                <center><button style={{background: 'black',color: 'white', width: '150px', height: '35px'}}>ดูข้อมูลทั้งหมด</button></center>
+                <center><NavLink to="/graph"><button className= 'memberButton'
+                style={{background: 'black',color: 'white', width: '150px', height: '35px'}}>
+                 ดูข้อมูลทั้งหมด
+                  </button></NavLink> </center>
               </DemoBox>
             </Col>
           </Row>
